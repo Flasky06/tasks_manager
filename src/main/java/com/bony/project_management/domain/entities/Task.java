@@ -9,15 +9,15 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "tasks")
-public class Tasks {
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id",updatable = false,nullable = false)
     private UUID id;
 
-    @Column(name = "name",nullable = false)
-    private String name;
+    @Column(name = "title",nullable = false)
+    private String title;
 
     @Column(name = "description")
     private String description;
@@ -41,12 +41,12 @@ public class Tasks {
     @Column(name = "updated",nullable = false)
     private LocalDate updated;
 
-    public Tasks() {
+    public Task() {
     }
 
-    public Tasks(UUID id, String name, String description, LocalDate dueDate, TaskStatus status, TaskPriority priority, TaskList taskList, LocalDate created, LocalDate updated) {
+    public Task(UUID id, String title, String description, LocalDate dueDate, TaskStatus status, TaskPriority priority, TaskList taskList, LocalDate created, LocalDate updated) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.status = status;
@@ -64,12 +64,12 @@ public class Tasks {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -132,20 +132,20 @@ public class Tasks {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tasks tasks = (Tasks) o;
-        return Objects.equals(id, tasks.id) && Objects.equals(name, tasks.name) && Objects.equals(description, tasks.description) && Objects.equals(dueDate, tasks.dueDate) && status == tasks.status && priority == tasks.priority && Objects.equals(taskList, tasks.taskList) && Objects.equals(created, tasks.created) && Objects.equals(updated, tasks.updated);
+        Task tasks = (Task) o;
+        return Objects.equals(id, tasks.id) && Objects.equals(title, tasks.title) && Objects.equals(description, tasks.description) && Objects.equals(dueDate, tasks.dueDate) && status == tasks.status && priority == tasks.priority && Objects.equals(taskList, tasks.taskList) && Objects.equals(created, tasks.created) && Objects.equals(updated, tasks.updated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, dueDate, status, priority, taskList, created, updated);
+        return Objects.hash(id, title, description, dueDate, status, priority, taskList, created, updated);
     }
 
     @Override
     public String toString() {
-        return "Tasks{" +
+        return "Task{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", dueDate=" + dueDate +
                 ", status=" + status +

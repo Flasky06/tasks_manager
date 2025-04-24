@@ -23,7 +23,7 @@ public class TaskList {
     private String description;
 
     @OneToMany(mappedBy = "taskList",cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
-    private List<Tasks> tasks;
+    private List<Task> tasks;
 
 
     @Column(name = "created",nullable = false)
@@ -35,7 +35,7 @@ public class TaskList {
     public TaskList() {
     }
 
-    public TaskList(UUID id, String title, String description, List<Tasks> tasks, LocalDate created, LocalDate updated) {
+    public TaskList(UUID id, String title, String description, List<Task> tasks, LocalDate created, LocalDate updated) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -68,11 +68,11 @@ public class TaskList {
         this.description = description;
     }
 
-    public List<Tasks> getTasks() {
+    public List<Task> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Tasks> tasks) {
+    public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
 
@@ -107,7 +107,7 @@ public class TaskList {
 
     @Override
     public String toString() {
-        return "TaskList{" +
+        return "TaskListDto{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
