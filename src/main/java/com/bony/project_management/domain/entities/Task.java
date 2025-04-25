@@ -22,7 +22,7 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "due_ate")
+    @Column(name = "due_date")
     private LocalDate dueDate;
 
     @Column(name = "status",nullable = false)

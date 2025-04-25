@@ -1,4 +1,4 @@
-package com.bony.project_management.mappers.impl;
+package com.bony.project_management.mappers.Impl;
 
 import com.bony.project_management.domain.dto.TaskListDto;
 import com.bony.project_management.domain.entities.Task;
