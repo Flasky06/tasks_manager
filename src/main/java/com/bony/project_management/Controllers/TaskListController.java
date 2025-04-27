@@ -2,10 +2,10 @@ package com.bony.project_management.Controllers;
 
 import com.bony.project_management.Services.TaskListService;
 import com.bony.project_management.domain.dto.TaskListDto;
+import com.bony.project_management.domain.dto.TasksDto;
+import com.bony.project_management.domain.entities.TaskList;
 import com.bony.project_management.mappers.TaskListMapper;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +28,14 @@ public class TaskListController {
                 .map(taskListMapper::toDto)
                 .toList();
 
+    }
+
+    @PostMapping
+    public TaskListDto createTaskList(@RequestBody TaskListDto taskListDto){
+       TaskList createdTaskList = taskListService.createTaskList(
+                taskListMapper.fromDto(taskListDto)
+        );
+
+       return taskListMapper.toDto(createdTaskList);
     }
 }

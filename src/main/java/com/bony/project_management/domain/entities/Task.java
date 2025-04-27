@@ -4,6 +4,7 @@ package com.bony.project_management.domain.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -36,15 +37,15 @@ public class Task {
     private TaskList taskList;
 
     @Column(name = "created",nullable = false)
-    private LocalDate created;
+    private LocalDateTime created;
 
     @Column(name = "updated",nullable = false)
-    private LocalDate updated;
+    private LocalDateTime updated;
 
     public Task() {
     }
 
-    public Task(UUID id, String title, String description, LocalDate dueDate, TaskStatus status, TaskPriority priority, TaskList taskList, LocalDate created, LocalDate updated) {
+    public Task(UUID id, String title, String description, LocalDate dueDate, TaskStatus status, TaskPriority priority, TaskList taskList, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -112,28 +113,27 @@ public class Task {
         this.taskList = taskList;
     }
 
-    public LocalDate getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDate created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
     }
 
-    public LocalDate getUpdated() {
+    public LocalDateTime getUpdated() {
         return updated;
     }
 
-    public void setUpdated(LocalDate updated) {
+    public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Task tasks = (Task) o;
-        return Objects.equals(id, tasks.id) && Objects.equals(title, tasks.title) && Objects.equals(description, tasks.description) && Objects.equals(dueDate, tasks.dueDate) && status == tasks.status && priority == tasks.priority && Objects.equals(taskList, tasks.taskList) && Objects.equals(created, tasks.created) && Objects.equals(updated, tasks.updated);
+        Task task = (Task) o;
+        return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(dueDate, task.dueDate) && status == task.status && priority == task.priority && Objects.equals(taskList, task.taskList) && Objects.equals(created, task.created) && Objects.equals(updated, task.updated);
     }
 
     @Override
