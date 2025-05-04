@@ -6,6 +6,7 @@ import com.bony.project_management.domain.entities.Task;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -15,8 +16,9 @@ public class TaskServiceImpl implements TaskService {
         this.taskRepository = taskRepository;
     }
 
+
     @Override
-    public List<Task> listTasks() {
-        return taskRepository.findAll();
+    public List<Task> listTasks(UUID taskListId) {
+        return taskRepository.findByTaskListId(taskListId);
     }
 }
